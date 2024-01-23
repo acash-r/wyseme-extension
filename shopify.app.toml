@@ -1,0 +1,31 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "WyseMe"
+client_id = "42ff63fe1c62cbea8501f36b18118fca"
+application_url = "https://store.wyse.me/v1/auth"
+embedded = false
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+use_legacy_install_flow = true
+
+[auth]
+redirect_urls = [
+  "https://store.wyse.me/v1/store/signup/shopify",
+  "https://store.wyse.me/v1/home",
+  "https://store.wyse.me/v1/store/update/shopify"
+]
+
+[webhooks]
+api_version = "2023-01"
+
+  [webhooks.privacy_compliance]
+  customer_deletion_url = "https://store.wyse.me/v1/webhook/redact"
+  customer_data_request_url = "https://store.wyse.me/v1/webhook/customer_data"
+  shop_deletion_url = "https://store.wyse.me/v1/webhook/redact_shop"
+
+[pos]
+embedded = false
+
+[build]
+dev_store_url = "wyseme-prod-1610.myshopify.com"

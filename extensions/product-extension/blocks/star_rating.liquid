@@ -1,0 +1,49 @@
+<div class="nector-customer-earning-container" style="text-align: start;">
+  <div class="nector-customer-earning-content-container" style="background-color: #eee; color: #000; font-size: 14px;">
+
+    <span class="nector-customer-phone" hidden>{{ customer.phone | default: "" }}</span>
+    <span class="nector-customer-email" hidden>{{ customer.email | default: "" }}</span>
+
+    {% if request.page_type == "product" %}
+      {% assign price =  product.price %}
+    {% elsif  request.page_type == "cart" %}
+      {% assign price =  cart.items_subtotal_price %}
+    {% endif %}
+
+    <span class="nector-customer-earning-content">
+      {% assign price_discount =  price | times: 0.06 | divided_by: 100 %}
+      <span class="spending-value" hidden >{{ price | divided_by: 100 }}</span>
+      You will earn upto <span id="wysepts"> {{ price_discount | ceil }} </span>
+      Wyse points with this purchase.
+      <span class="nector-customer-earning-info-icon nector-customer-earning-tooltip" data-text="These coins can be redeemed for ₹30 discount on a future order.">
+        i
+      </span>
+        (<a href="{{ routes.account_login_url }}" style="color: #000;">Login</a>/
+        <a href="{{ routes.account_register_url }}" style="color: #000;">Signup</a>) to know more
+    </span>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Wyse Product Ext.",
+  "target": "section",
+  "stylesheet": "wyse.css",
+  "javascript": "wyse.js",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "product",
+      "autofill": true
+    },
+    {
+      "type": "color",
+      "id": "colour",
+      "label": "Star Colour",
+      "default": "#ff0000"
+    }
+  ]
+}
+{% endschema %}
+

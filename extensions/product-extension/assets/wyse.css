@@ -1,0 +1,19 @@
+.nector-customer-earning-content-container {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+ 
+.nector-customer-earning-info-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 0.85em;
+    width: 0.85em;
+    font-size: 100%;
+    padding: 0.2em;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%;
+}
